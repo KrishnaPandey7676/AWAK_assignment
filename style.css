@@ -201,7 +201,7 @@ button:hover {
 
 /* Remember me checkbox */
 .remember-me {
-    display: flex;
+    display: -webkit-box;
     align-items: center;
 }
 
