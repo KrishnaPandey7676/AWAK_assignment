@@ -89,6 +89,8 @@ form h2 {
 
 /* Input fields */
 .form-group {
+    position: relative;
+    width: 100%;
     margin-bottom: 15px;
 }
 
@@ -98,7 +100,8 @@ form h2 {
     color: var(--text-color);
 }
 
-.form-group input {
+.form-group input,
+.password-wrapper input {
     width: 100%;
     padding: 10px;
     background-color: var(--input-bg);
@@ -109,7 +112,30 @@ form h2 {
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.form-group input:focus {
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 35px; /* Space for the eye icon */
+}
+
+.password-wrapper img {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.password-wrapper img:hover {
+    opacity: 1;
+}
+
+input:focus {
     border-color: #3498db;
     box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
     outline: none;

@@ -1,7 +1,8 @@
+
 document.getElementById('loginForm').addEventListener('submit', async function (event) {
     event.preventDefault();
 
-    
+    // Clear previous error messages
     document.getElementById('emailError').textContent = '';
     document.getElementById('passwordError').textContent = '';
     document.getElementById('responseMessage').textContent = '';
@@ -12,25 +13,26 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     const rememberMe = document.getElementById('rememberMe').checked;  // Get "Remember me" value
     let isValid = true;
 
-    
+    // Validate email
     if (!validateEmail(email)) {
         document.getElementById('emailError').textContent = 'Please enter a valid email.';
         isValid = false;
     }
 
-    
+    // Validate password length
     if (password.length < 6) {
         document.getElementById('passwordError').textContent = 'Password must be at least 6 characters long.';
         isValid = false;
     }
 
+    // Stop submission if validation fails
     if (!isValid) {
         document.getElementById('spinner').style.display = 'none';  // Hide spinner
         return;
     }
 
-    
     try {
+        // Simulated API call for login
         const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST',
             headers: {
@@ -42,14 +44,14 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             }),
         });
 
-        
+        // Simulate delay for API response
         await new Promise(resolve => setTimeout(resolve, 1000));
 
         if (response.ok) {
             document.getElementById('responseMessage').textContent = 'Login successful!';
             document.getElementById('responseMessage').style.color = 'green';
 
-            // If "Remember Me" is checked, save email in localStorage
+            // Save email if "Remember Me" is checked
             if (rememberMe) {
                 localStorage.setItem('rememberedEmail', email);
             }
@@ -65,13 +67,13 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     }
 });
 
-
+// Function to validate email format
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
 }
 
-
+// Load remembered email if available
 window.addEventListener('load', function () {
     const rememberedEmail = localStorage.getItem('rememberedEmail');
     if (rememberedEmail) {
@@ -80,9 +82,24 @@ window.addEventListener('load', function () {
     }
 });
 
-
+// Dark mode toggle functionality
 document.getElementById('darkModeToggle').addEventListener('click', function () {
     document.body.classList.toggle('dark-mode');
     const isDarkMode = document.body.classList.contains('dark-mode');
-    document.getElementById('darkModeToggle').textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+    document.getElementById('darkModeToggle').textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+});
+
+// Show/Hide Password Functionality
+document.getElementById('eyeicon').addEventListener('click', function () {
+    const passwordField = document.getElementById('password');
+    const eyeIcon = document.getElementById('eyeicon');
+
+    // Toggle the password field type
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        eyeIcon.src = 'assets/eye-open.jpeg'; // Update icon to "eye open"
+    } else {
+        passwordField.type = 'password';
+        eyeIcon.src = 'assets/eye-close.jpeg'; // Update icon to "eye close"
+    }
 });
