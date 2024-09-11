@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>     
+<body>
+    <!-- Background video container -->
+    <div class="video-background">
+        <video autoplay loop muted playsinline>
+            <source src="assets/background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay"></div> <!-- Overlay for darkening effect -->
+    </div>
+
+    <!-- Dark mode toggle button -->
+    <div class="theme-toggle">
+        <button id="darkModeToggle">Dark Mode</button>
+    </div>
+
+    <!-- Login form container -->
+    <div class="login-container">
+        <form id="loginForm">
+            <h2>AWAK Login Page</h2>
+            <div class="form-group">
+                <label for="email">Username/Email</label>
+                <input type="text" id="email" name="email" required>
+                <small class="error-message" id="emailError"></small>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <small class="error-message" id="passwordError"></small>
+            </div>
+            <div class="form-group remember-me">
+                <input type="checkbox" id="rememberMe" name="rememberMe">
+                <label for="rememberMe">Remember me</label>
+            </div>
+            <button type="submit">Login</button>
+            <div class="spinner" id="spinner" style="display: none;"></div>
+            <div id="responseMessage"></div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
