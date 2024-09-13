@@ -22,6 +22,7 @@ Welcome to the AWAK Login Page project! This is a modern, responsive login page 
 - Cross platform
 - Remember Me Checkbox: Provides an option for users to stay logged in by saving their credentials for future sessions.
  - Loading Spinner During API Call: Displays a loading animation while waiting for an API response, improving the user experience during delays.
+ - Show/hide password functionality. 
 
 
 
